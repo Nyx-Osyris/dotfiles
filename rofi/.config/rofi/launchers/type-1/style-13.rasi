@@ -1,0 +1,217 @@
+configuration {
+    modi: "drun,run,filebrowser,window";
+    show-icons: false;
+    display-drun: " Apps";
+    display-run: " Run";
+    display-filebrowser: " Files";
+    display-window: " Windows";
+    drun-display-format: "{name}";
+    window-format: "{w} · {c} · {t}";
+}
+
+@import "shared/colors.rasi"
+@import "shared/fonts.rasi"
+
+* {
+    border-colour:               @selected;
+    handle-colour:               @active;
+    scrollbar-colour:            @background-alt;
+    background-colour:           @background;
+    foreground-colour:           @foreground;
+    alternate-background:        @background-alt;
+
+    normal-background:           transparent;
+    normal-foreground:           @foreground;
+
+    urgent-background:           transparent;
+    urgent-foreground:           @urgent;
+
+    active-background:           transparent;
+    active-foreground:           @active;
+
+    selected-normal-background:  @selected;
+    selected-normal-foreground:  @foreground;
+
+    selected-urgent-background:  @urgent;
+    selected-urgent-foreground:  @background;
+
+    selected-active-background:  @active;
+    selected-active-foreground:  @background;
+
+    alternate-normal-background: transparent;
+    alternate-normal-foreground: @foreground;
+
+    alternate-urgent-background: transparent;
+    alternate-urgent-foreground: @urgent;
+
+    alternate-active-background: transparent;
+    alternate-active-foreground: @active;
+
+    box-spacing:                 16px;
+    element-padding:             14px;
+    element-radius:              8px;
+    element-spacing:             12px;
+}
+
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  true;
+    background-color:            @background-colour;
+}
+
+mainbox {
+    enabled:                     true;
+    spacing:                     @box-spacing;
+    margin:                      120px 300px;
+    padding:                     0px;
+    background-color:            transparent;
+    children:                    [ "inputbar", "listview", "mode-switcher" ];
+}
+
+inputbar {
+    enabled:                     true;
+    spacing:                     @element-spacing;
+    margin:                      0px;
+    padding:                     @element-padding;
+    border:                      0px;
+    border-radius:               @element-radius;
+    background-color:            @background-alt;
+    text-color:                  @foreground-colour;
+    children:                    [ "prompt", "textbox-prompt-colon", "entry" ];
+}
+
+prompt {
+    enabled:                     true;
+    background-color:            transparent;
+    text-color:                  @selected;
+}
+
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    str:                         ":";
+    background-color:            transparent;
+    text-color:                  @selected;
+}
+
+entry {
+    enabled:                     true;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    placeholder:                 "Search...";
+    placeholder-color:           @foreground;
+}
+
+listview {
+    enabled:                     true;
+    columns:                     1;
+    lines:                       10;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   true;
+    layout:                      vertical;
+    fixed-height:                true;
+
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     0px;
+    background-color:            transparent;
+    text-color:                  @foreground-colour;
+}
+
+scrollbar {
+    enabled:                     true;
+    handle-width:                8px;
+    handle-color:                @handle-colour;
+    border-radius:               999px;
+    background-color:            @scrollbar-colour;
+}
+
+element {
+    enabled:                     true;
+    spacing:                     @element-spacing;
+    margin:                      0px;
+    padding:                     @element-padding;
+    border:                      0px;
+    border-radius:               @element-radius;
+    background-color:            transparent;
+    text-color:                  @foreground-colour;
+    cursor:                      pointer;
+}
+
+element normal.normal {
+    background-color:            @normal-background;
+    text-color:                  @normal-foreground;
+}
+
+element normal.urgent {
+    background-color:            @urgent-background;
+    text-color:                  @urgent-foreground;
+}
+
+element normal.active {
+    background-color:            @active-background;
+    text-color:                  @active-foreground;
+}
+
+element selected.normal {
+    background-color:            @selected-normal-background;
+    text-color:                  @selected-normal-foreground;
+}
+
+element selected.urgent {
+    background-color:            @selected-urgent-background;
+    text-color:                  @selected-urgent-foreground;
+}
+
+element selected.active {
+    background-color:            @selected-active-background;
+    text-color:                  @selected-active-foreground;
+}
+
+element alternate.normal {
+    background-color:            @alternate-normal-background;
+    text-color:                  @alternate-normal-foreground;
+}
+
+element alternate.urgent {
+    background-color:            @alternate-urgent-background;
+    text-color:                  @alternate-urgent-foreground;
+}
+
+element alternate.active {
+    background-color:            @alternate-active-background;
+    text-color:                  @alternate-active-foreground;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+mode-switcher {
+    enabled:                     true;
+    spacing:                     @box-spacing;
+    margin:                      0px;
+    padding:                     0px;
+    background-color:            transparent;
+    text-color:                  @foreground-colour;
+}
+
+button {
+    padding:                     @element-padding;
+    border:                      0px;
+    border-radius:               @element-radius;
+    background-color:            @alternate-background;
+    text-color:                  @foreground;
+    cursor:                      pointer;
+}
+
+button selected {
+    background-color:            @selected-normal-background;
+    text-color:                  @selected-normal-foreground;
+}
