@@ -280,3 +280,16 @@ tooltip label {
 @keyframes blink2 { to { background-color: transparent; color: #ff3270; } }
 @keyframes blink-recording { to { color: #060608; } }
 @keyframes blink-inhibitor { to { color: #060608; } }
+
+#custom-notification {
+  color: #ff0055;
+  padding: 0 6px;
+  margin: 3px 1px;
+}
+
+#custom-notification:hover {
+  color: #060608;
+  background-color: #00ffc8;
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(0, 255, 200, 0.4);
+}

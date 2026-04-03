@@ -1,0 +1,180 @@
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Control Center */
+.control-center {
+  background-color: rgba(6, 6, 8, 0.95);
+  border: 2px solid rgba(255, 0, 85, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(255, 0, 85, 0.3);
+}
+
+.control-center .notification {
+  background-color: rgba(20, 0, 9, 0.9);
+  border: 1px solid rgba(255, 0, 85, 0.5);
+  border-radius: 6px;
+  margin: 8px;
+  padding: 8px;
+}
+
+/* Notification Window */
+.notification {
+  background-color: rgba(20, 0, 9, 0.95);
+  border: 2px solid rgba(255, 0, 85, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(255, 0, 85, 0.4);
+  padding: 12px;
+  margin: 8px;
+}
+
+.notification.critical {
+  border-color: rgba(0, 255, 200, 0.9);
+  box-shadow: 0 0 20px rgba(0, 255, 200, 0.5);
+}
+
+/* Title */
+.notification .notification-content .summary {
+  color: #ff0055;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+/* Body */
+.notification .notification-content .body {
+  color: #ff8ba8;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Time */
+.notification .notification-content .time {
+  color: #be4e74;
+  font-size: 10px;
+}
+
+/* Close button */
+.notification .close-button {
+  background-color: rgba(255, 0, 85, 0.3);
+  color: #ff0055;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 0, 85, 0.5);
+}
+
+.notification .close-button:hover {
+  background-color: #ff0055;
+  color: #060608;
+}
+
+/* Control Center Header */
+.control-center .widget-title {
+  background-color: rgba(30, 5, 15, 0.9);
+  color: #ff0055;
+  border-bottom: 2px solid rgba(255, 0, 85, 0.6);
+  padding: 12px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* DND Toggle */
+.control-center .widget-dnd {
+  background-color: rgba(30, 5, 15, 0.8);
+  border: 1px solid rgba(255, 0, 85, 0.4);
+  border-radius: 6px;
+  margin: 8px;
+  padding: 8px;
+}
+
+.control-center .widget-dnd label {
+  color: #ff8ba8;
+}
+
+.control-center .widget-dnd > switch {
+  background-color: rgba(255, 0, 85, 0.3);
+  border: 1px solid rgba(255, 0, 85, 0.5);
+  border-radius: 12px;
+}
+
+.control-center .widget-dnd > switch:checked {
+  background-color: #00ffc8;
+}
+
+/* Clear All button */
+.control-center .widget-title button {
+  background-color: rgba(255, 0, 85, 0.3);
+  color: #ff0055;
+  border: 1px solid rgba(255, 0, 85, 0.5);
+  border-radius: 4px;
+  padding: 4px 12px;
+}
+
+.control-center .widget-title button:hover {
+  background-color: #ff0055;
+  color: #060608;
+}
+
+/* MPRIS */
+.control-center .widget-mpris {
+  background-color: rgba(30, 5, 15, 0.8);
+  border: 1px solid rgba(255, 0, 85, 0.4);
+  border-radius: 6px;
+  margin: 8px;
+  padding: 8px;
+}
+
+.control-center .widget-mpris .widget-mpris-title {
+  color: #ff0055;
+  font-weight: bold;
+}
+
+.control-center .widget-mpris .widget-mpris-subtitle {
+  color: #ff8ba8;
+  font-size: 11px;
+}
+
+.control-center .widget-mpris button {
+  background-color: rgba(255, 0, 85, 0.2);
+  color: #ff0055;
+  border: 1px solid rgba(255, 0, 85, 0.4);
+  border-radius: 4px;
+}
+
+.control-center .widget-mpris button:hover {
+  background-color: rgba(255, 0, 85, 0.4);
+}
+
+/* Scrollbar */
+.control-center scrollbar {
+  background-color: transparent;
+}
+
+.control-center scrollbar slider {
+  background-color: rgba(255, 0, 85, 0.3);
+  border-radius: 4px;
+}
+
+.control-center scrollbar slider:hover {
+  background-color: rgba(255, 0, 85, 0.5);
+}
+
+/* Notification Actions */
+.notification .notification-action {
+  background-color: rgba(255, 0, 85, 0.2);
+  color: #ff0055;
+  border: 1px solid rgba(255, 0, 85, 0.4);
+  border-radius: 4px;
+  margin: 4px 2px;
+  padding: 6px 12px;
+}
+
+.notification .notification-action:hover {
+  background-color: #ff0055;
+  color: #060608;
+}
+
+.notification .notification-action:active {
+  background-color: #00ffc8;
+  color: #060608;
+}
