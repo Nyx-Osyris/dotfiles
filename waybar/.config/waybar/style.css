@@ -27,6 +27,7 @@ window#waybar.empty #window {
   opacity: 0;
 }
 
+/* ===== TOOLTIP ===== */
 tooltip {
   padding: 4px;
   background: rgba(20, 0, 7, 0.96);
@@ -41,6 +42,7 @@ tooltip label {
   font-weight: normal;
 }
 
+/* ===== GROUPS ===== */
 #group-left1,
 #group-left2,
 #group-left3 {
@@ -49,14 +51,6 @@ tooltip label {
   border: 2px solid rgba(255, 0, 85, 0.75);
   background-color: rgba(30, 5, 15, 0.94);
   color: #ff3270;
-  margin: 3px 1px;
-}
-
-#group-tray-expander {
-  background-color: rgba(30, 5, 15, 0.94);
-  color: #ff3270;
-  border-radius: 4px;
-  border: 2px solid rgba(255, 50, 112, 0.75);
   margin: 3px 1px;
 }
 
@@ -79,6 +73,7 @@ tooltip label {
   margin: 3px 1px;
 }
 
+/* ===== WORKSPACES ===== */
 #workspaces {
   border: 2px solid rgba(255, 0, 85, 0.82);
   border-radius: 4px;
@@ -131,13 +126,14 @@ tooltip label {
   box-shadow: 0 0 8px rgba(0, 255, 200, 0.4);
 }
 
+/* ===== WINDOW ===== */
 #window {
   color: #ff3270;
   opacity: 0.92;
 }
 
+/* ===== MODULES ===== */
 #tray,
-#group-tray-expander,
 #group-power,
 #mpris,
 #cpu,
@@ -147,12 +143,10 @@ tooltip label {
 #memory,
 #backlight,
 #bluetooth,
-#pulseaudio,
 #pulseaudio-output,
-#pulseaudio-input,
 #window,
 #power-profiles-daemon,
-#idle_inhibitor {
+#custom-notification {
   min-width: 14px;
   margin: 3px 1px;
   padding: 0 4px;
@@ -164,6 +158,7 @@ tooltip label {
   padding: 0 3px;
 }
 
+/* ===== MPRIS ===== */
 #mpris {
   border-radius: 4px;
   border: 2px solid rgba(255, 64, 129, 0.80);
@@ -172,62 +167,63 @@ tooltip label {
   animation: blink 3s linear infinite alternate;
 }
 
+/* ===== TRAY ===== */
 #tray {
   background-color: rgba(30, 5, 15, 0.95);
 }
 
-#tray > .passive { -gtk-icon-effect: dim; }
-#tray > .needs-attention { -gtk-icon-effect: highlight; background-color: transparent; }
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
 
-#custom-expand-icon {
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: transparent;
+}
+
+/* ===== MODULE COLORS ===== */
+#backlight,
+#bluetooth,
+#network,
+#cpu,
+#memory,
+#power-profiles-daemon,
+#battery,
+#clock,
+#pulseaudio-output {
   color: #ff3270;
-  padding: 0 4px;
 }
 
-#custom-voxtype { min-width: 12px; margin: 0 0 0 2.5px; }
-#custom-voxtype.recording { color: #ff3270; }
-
-#custom-idle-indicator,
-#custom-notification-silencing-indicator {
-  min-width: 12px;
-  margin: 0;
-  font-size: 10px;
-  padding-bottom: 0;
+/* ===== BLUETOOTH STATES ===== */
+#bluetooth.disabled,
+#bluetooth.off {
+  color: #70243d;
 }
 
-#custom-idle-indicator.active,
-#custom-notification-silencing-indicator.active { color: #ff3270; }
+#bluetooth.connected {
+  color: #00ffc8;
+}
 
-.hidden { opacity: 0; }
+/* ===== NOTIFICATION ===== */
+#custom-notification {
+  color: #ff0055;
+  padding: 0 6px;
+}
 
-#backlight { color: #ff3270; }
-#bluetooth { color: #ff3270; }
-#network { color: #ff3270; }
-#cpu { color: #ff3270; }
-#memory { color: #ff3270; }
-#power-profiles-daemon { color: #ff3270; }
-#battery { color: #ff3270; }
-#clock { color: #ff3270; }
-#pulseaudio-output { color: #ff3270; }
-#pulseaudio-input { color: #ff3270; }
-
+/* ===== HOVER STATES ===== */
 #clock:hover,
 #tray:hover,
-#custom-expand-icon:hover,
 #cpu:hover,
 #memory:hover,
 #window:hover,
-#temperature:hover,
 #battery:hover,
 #bluetooth:hover,
 #power-profiles-daemon:hover,
 #backlight:hover,
-#idle_inhibitor:hover,
 #network:hover,
-#pulseaudio:hover,
 #pulseaudio-output:hover,
-#pulseaudio-input:hover,
-#mpris:hover {
+#mpris:hover,
+#custom-notification:hover {
   color: #060608;
   border-radius: 2px;
   opacity: 1;
@@ -235,32 +231,7 @@ tooltip label {
   box-shadow: 0 0 8px rgba(0, 255, 200, 0.4);
 }
 
-#idle_inhibitor {
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  color: #ff3270;
-}
-
-#idle_inhibitor.activated {
-  color: #00ffc8;
-  animation-name: blink-inhibitor;
-  animation-duration: 1s;
-}
-
-#custom-screenrecording-indicator {
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  color: transparent;
-}
-
-#custom-screenrecording-indicator.active {
-  color: #ff3270;
-  animation-name: blink-recording;
-  animation-duration: 0.5s;
-}
-
+/* ===== BATTERY STATES ===== */
 #battery.warning {
   color: #ff3270;
   background-color: rgba(30, 5, 15, 0.94);
@@ -276,20 +247,15 @@ tooltip label {
   animation-direction: alternate;
 }
 
-@keyframes blink { to { color: #ff6090; } }
-@keyframes blink2 { to { background-color: transparent; color: #ff3270; } }
-@keyframes blink-recording { to { color: #060608; } }
-@keyframes blink-inhibitor { to { color: #060608; } }
-
-#custom-notification {
-  color: #ff0055;
-  padding: 0 6px;
-  margin: 3px 1px;
+/* ===== ANIMATIONS ===== */
+@keyframes blink {
+  to { color: #ff6090; }
 }
 
-#custom-notification:hover {
-  color: #060608;
-  background-color: #00ffc8;
-  border-radius: 2px;
-  box-shadow: 0 0 8px rgba(0, 255, 200, 0.4);
+@keyframes blink2 {
+  to { background-color: transparent; color: #ff3270; }
+}
+
+.hidden {
+  opacity: 0;
 }
