@@ -1,180 +1,329 @@
+/* ============================================================
+   SWAYNC // CYBERPUNK TERMINAL THEME
+   palette: crimson/cyan/magenta
+   icons: disabled
+   ============================================================ */
+
 * {
-  font-family: "JetBrainsMono Nerd Font";
+  font-family: "JetBrains Mono", "JetBrainsMono Nerd Font Mono", monospace;
   font-size: 12px;
-  font-weight: bold;
+  font-weight: normal;
 }
 
-/* Control Center */
-.control-center {
-  background-color: rgba(6, 6, 8, 0.95);
-  border: 2px solid rgba(255, 0, 85, 0.8);
-  border-radius: 8px;
-  box-shadow: 0 0 20px rgba(255, 0, 85, 0.3);
+/* ---- variables ------------------------------------------------ */
+
+@define-color bg          #060608;
+@define-color bg-alt      #0a0b0e;
+@define-color surface     #101116;
+@define-color overlay     #140009;
+@define-color elevated    #1d000a;
+
+@define-color text        #ffffff;
+@define-color text-sec    #ff8ba8;
+@define-color text-muted  #be4e74;
+@define-color text-dis    #70243d;
+
+@define-color primary     #ff0055;
+@define-color primary-b   #ff5680;
+@define-color secondary   #00ffc8;
+@define-color accent-alt  #d57bff;
+
+@define-color success     #00e676;
+@define-color warning     #fffc58;
+@define-color error       #ff3270;
+@define-color info        #00c3ff;
+
+@define-color border      #ff0055;
+@define-color border-sub  #ff00552a;
+
+/* ---- reset ---------------------------------------------------- */
+
+trough,
+progressbar,
+highlight {
+  background-color: transparent;
 }
 
-.control-center .notification {
-  background-color: rgba(20, 0, 9, 0.9);
-  border: 1px solid rgba(255, 0, 85, 0.5);
-  border-radius: 6px;
-  margin: 8px;
-  padding: 8px;
+/* ---- floating notification window ----------------------------- */
+
+.floating-notifications.background {
+  background-color: @bg;
+  border: 1px solid @border-sub;
+  border-radius: 0;
+  padding: 0;
 }
 
-/* Notification Window */
+.notification-row {
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
 .notification {
-  background-color: rgba(20, 0, 9, 0.95);
-  border: 2px solid rgba(255, 0, 85, 0.8);
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(255, 0, 85, 0.4);
-  padding: 12px;
-  margin: 8px;
+  background-color: @overlay;
+  border: 1px solid @border-sub;
+  border-left: 3px solid @primary;
+  border-radius: 0;
+  padding: 12px 14px;
+  margin: 2px 6px;
 }
 
 .notification.critical {
-  border-color: rgba(0, 255, 200, 0.9);
-  box-shadow: 0 0 20px rgba(0, 255, 200, 0.5);
+  border-left-color: @error;
+  box-shadow: inset 0 0 20px rgba(255, 50, 112, 0.06);
 }
 
-/* Title */
-.notification .notification-content .summary {
-  color: #ff0055;
-  font-weight: bold;
+.notification.low,
+.notification.normal {
+  border-left-color: @primary;
+}
+
+/* hide icon container — no-icon policy */
+.notification .notification-icon,
+.notification image {
+  opacity: 0;
+  min-width: 0;
+  min-height: 0;
+}
+
+/* ---- summary / title — log syntax: >>> APP [EVENT] ------------ */
+
+.notification .summary {
+  color: @primary-b;
   font-size: 13px;
+  font-weight: bold;
+  text-transform: none;
+  padding: 0;
+  margin: 0 0 4px 0;
 }
 
-/* Body */
-.notification .notification-content .body {
-  color: #ff8ba8;
-  font-size: 12px;
-  margin-top: 4px;
+.notification.critical .summary {
+  color: @error;
 }
 
-/* Time */
-.notification .notification-content .time {
-  color: #be4e74;
+/* ---- body — lowercase data stream ----------------------------- */
+
+.notification .body {
+  color: @text-sec;
+  font-size: 11px;
+  text-transform: lowercase;
+  padding: 0;
+  margin: 0;
+}
+
+.notification.critical .body {
+  color: @warning;
+  text-transform: uppercase;
+}
+
+/* ---- time ----------------------------------------------------- */
+
+.notification .time {
+  color: @text-muted;
   font-size: 10px;
 }
 
-/* Close button */
+/* ---- close button — raw bracket text -------------------------- */
+
 .notification .close-button {
-  background-color: rgba(255, 0, 85, 0.3);
-  color: #ff0055;
-  border-radius: 4px;
-  border: 1px solid rgba(255, 0, 85, 0.5);
+  background-color: @surface;
+  color: @primary;
+  border: 1px solid @border-sub;
+  border-radius: 0;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: bold;
 }
 
 .notification .close-button:hover {
-  background-color: #ff0055;
-  color: #060608;
+  background-color: @primary;
+  color: @bg;
 }
 
-/* Control Center Header */
-.control-center .widget-title {
-  background-color: rgba(30, 5, 15, 0.9);
-  color: #ff0055;
-  border-bottom: 2px solid rgba(255, 0, 85, 0.6);
-  padding: 12px;
+/* ---- action buttons — [ IGNORAR ] / [ EXECUTAR ] style -------- */
+
+.notification-action {
+  background-color: @surface;
+  color: @text-sec;
+  border: 1px solid @border-sub;
+  border-radius: 0;
+  padding: 6px 14px;
+  margin: 4px 2px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.notification-action:hover {
+  background-color: @secondary;
+  color: @bg;
+  border-color: @secondary;
+}
+
+.notification-action:active {
+  background-color: @success;
+  color: @bg;
+  border-color: @success;
+}
+
+/* ============================================================
+   CONTROL CENTER
+   ============================================================ */
+
+.control-center {
+  background-color: @bg;
+  border: 1px solid @border;
+  border-radius: 0;
+  box-shadow: 0 0 18px rgba(255, 0, 85, 0.15),
+              0 0 40px rgba(255, 0, 85, 0.05);
+  padding: 0;
+}
+
+/* ---- title widget — header bar -------------------------------- */
+
+.widget-title {
+  background-color: @bg-alt;
+  color: @primary;
+  border-bottom: 1px solid @border-sub;
+  padding: 14px 18px;
   font-size: 14px;
   font-weight: bold;
 }
 
-/* DND Toggle */
-.control-center .widget-dnd {
-  background-color: rgba(30, 5, 15, 0.8);
-  border: 1px solid rgba(255, 0, 85, 0.4);
-  border-radius: 6px;
-  margin: 8px;
-  padding: 8px;
+.widget-title > label {
+  color: @primary;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
-.control-center .widget-dnd label {
-  color: #ff8ba8;
-}
+/* ---- clear-all bracket button --------------------------------- */
 
-.control-center .widget-dnd > switch {
-  background-color: rgba(255, 0, 85, 0.3);
-  border: 1px solid rgba(255, 0, 85, 0.5);
-  border-radius: 12px;
-}
-
-.control-center .widget-dnd > switch:checked {
-  background-color: #00ffc8;
-}
-
-/* Clear All button */
-.control-center .widget-title button {
-  background-color: rgba(255, 0, 85, 0.3);
-  color: #ff0055;
-  border: 1px solid rgba(255, 0, 85, 0.5);
-  border-radius: 4px;
-  padding: 4px 12px;
-}
-
-.control-center .widget-title button:hover {
-  background-color: #ff0055;
-  color: #060608;
-}
-
-/* MPRIS */
-.control-center .widget-mpris {
-  background-color: rgba(30, 5, 15, 0.8);
-  border: 1px solid rgba(255, 0, 85, 0.4);
-  border-radius: 6px;
-  margin: 8px;
-  padding: 8px;
-}
-
-.control-center .widget-mpris .widget-mpris-title {
-  color: #ff0055;
+.widget-title button {
+  background-color: @surface;
+  color: @primary;
+  border: 1px solid @border-sub;
+  border-radius: 0;
+  padding: 4px 14px;
+  font-size: 11px;
   font-weight: bold;
 }
 
-.control-center .widget-mpris .widget-mpris-subtitle {
-  color: #ff8ba8;
+.widget-title button:hover {
+  background-color: @secondary;
+  color: @bg;
+  border-color: @secondary;
+}
+
+.widget-title button:active {
+  background-color: @success;
+  color: @bg;
+  border-color: @success;
+}
+
+/* ---- dnd widget ----------------------------------------------- */
+
+.widget-dnd {
+  background-color: @bg-alt;
+  border-bottom: 1px solid @border-sub;
+  padding: 10px 18px;
+}
+
+.widget-dnd > label {
+  color: @text-muted;
   font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.control-center .widget-mpris button {
-  background-color: rgba(255, 0, 85, 0.2);
-  color: #ff0055;
-  border: 1px solid rgba(255, 0, 85, 0.4);
-  border-radius: 4px;
+.widget-dnd > switch {
+  background-color: @surface;
+  color: @text-muted;
+  border: 1px solid @border-sub;
+  border-radius: 0;
+  min-width: 48px;
+  min-height: 22px;
+  padding: 0;
 }
 
-.control-center .widget-mpris button:hover {
-  background-color: rgba(255, 0, 85, 0.4);
+.widget-dnd > switch:checked {
+  background-color: @secondary;
+  border-color: @secondary;
 }
 
-/* Scrollbar */
-.control-center scrollbar {
-  background-color: transparent;
+.widget-dnd > switch slider {
+  background-color: @text-muted;
+  border-radius: 0;
+  min-width: 18px;
+  min-height: 18px;
 }
 
-.control-center scrollbar slider {
-  background-color: rgba(255, 0, 85, 0.3);
-  border-radius: 4px;
+.widget-dnd > switch:checked slider {
+  background-color: @bg;
 }
 
-.control-center scrollbar slider:hover {
-  background-color: rgba(255, 0, 85, 0.5);
+/* ---- notifications list --------------------------------------- */
+
+.widget-notifications {
+  background-color: @bg;
+  padding: 4px 0;
 }
 
-/* Notification Actions */
-.notification .notification-action {
-  background-color: rgba(255, 0, 85, 0.2);
-  color: #ff0055;
-  border: 1px solid rgba(255, 0, 85, 0.4);
-  border-radius: 4px;
-  margin: 4px 2px;
-  padding: 6px 12px;
+.widget-notifications > label {
+  color: @text-muted;
+  font-size: 10px;
 }
 
-.notification .notification-action:hover {
-  background-color: #ff0055;
-  color: #060608;
+/* ---- scrollbar ------------------------------------------------ */
+
+.control-center trough {
+  background-color: @bg;
 }
 
-.notification .notification-action:active {
-  background-color: #00ffc8;
-  color: #060608;
+.control-center slider {
+  background-color: @border-sub;
+  border-radius: 0;
+  min-width: 4px;
+}
+
+.control-center slider:hover {
+  background-color: @primary;
+}
+
+/* ---- control-center footer / buttons -------------------------- */
+
+.control-center .widget-buttons-toggle {
+  background-color: @bg-alt;
+  border-top: 1px solid @border-sub;
+  padding: 8px 18px;
+}
+
+.control-center .widget-buttons-toggle button {
+  background-color: @surface;
+  color: @secondary;
+  border: 1px solid var(--border-sub);
+  border-radius: 0;
+  padding: 6px 16px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.control-center .widget-buttons-toggle button:hover {
+  background-color: @secondary;
+  color: @bg;
+  border-color: @secondary;
+}
+
+.control-center .widget-buttons-toggle button:active {
+  background-color: @success;
+  color: @bg;
+  border-color: @success;
+}
+
+/* ---- empty state ---------------------------------------------- */
+
+.control-center .widget-notifications > scrolledwindow > viewport > box > box,
+.widget-notifications > label {
+  color: @text-dis;
+  font-size: 11px;
+  text-transform: lowercase;
 }
